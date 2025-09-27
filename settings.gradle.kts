@@ -42,7 +42,7 @@ include(
     ":api:buffet",
     ":api:core",
     ":api:main",
-    ":app",
+    ":composeApp",
     ":core",
     ":lastaapps:common",
     ":lastaapps:crash",

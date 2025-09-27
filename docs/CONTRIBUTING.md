@@ -22,7 +22,7 @@ The whole app is tied together using DI.
 - `api/core` - core classes for network communication, store, synchronization, ...
 - `api/agata`, `api/buffet` - implementation for individual canteen provider
 - `api/main` - packs all the providers into one interface, contains related business logic
-- `app` - only UI related code, purely Android (for now)
+- `composeApp` - only UI related code, purely Android (for now)
     - `features` - stores all the UI code
         - `root` - decides if the user is already logged in
         - `starting` - stores setup related code
