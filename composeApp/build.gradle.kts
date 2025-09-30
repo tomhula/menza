@@ -67,41 +67,44 @@ android {
         // Taken from the AS template project, should be safe
         resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
-
-    sourceSets["main"].kotlin.srcDir("src/androidMain/kotlin")
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    sourceSets["main"].res.srcDir("src/androidMain/res")
 }
 
-dependencies {
+kotlin {
+    androidTarget()
 
-    implementation(projects.api.agata)
-    implementation(projects.api.main)
-    implementation(projects.core)
-    implementation(projects.lastaapps.common)
-    implementation(projects.lastaapps.crash)
+    sourceSets {
+        androidMain {
+            dependencies {
+                implementation(projects.api.agata)
+                implementation(projects.api.main)
+                implementation(projects.core)
+                implementation(projects.lastaapps.common)
+                implementation(projects.lastaapps.crash)
 
-    implementation(libs.androidx.datastore)
-    implementation(libs.androidx.emoji2.core)
-    implementation(libs.androidx.startup)
-    implementation(libs.androidx.splashscreen)
-    implementation(libs.androidx.vectorDrawables)
-    implementation(libs.androidx.windowManager)
-    implementation(libs.google.material)
+                implementation(libs.androidx.datastore)
+                implementation(libs.androidx.emoji2.core)
+                implementation(libs.androidx.startup)
+                implementation(libs.androidx.splashscreen)
+                implementation(libs.androidx.vectorDrawables)
+                implementation(libs.androidx.windowManager)
+                implementation(libs.google.material)
 
-    implementation(libs.koin.android.startup)
+                implementation(libs.koin.android.startup)
 
-    implementation(libs.aboutLibraries.core)
+                implementation(libs.aboutLibraries.core)
 
-    implementation(libs.bundles.sqldelight)
+                implementation(libs.bundles.sqldelight)
 
-    implementation(libs.kotlinx.serializationJson)
-    implementation(libs.kotlinx.atomicfu)
+                implementation(libs.kotlinx.serializationJson)
+                implementation(libs.kotlinx.atomicfu)
 
-    implementation(libs.bundles.russhwolf.settings)
+                implementation(libs.bundles.russhwolf.settings)
 
-    implementation(libs.ktor.client.core)
-    // required by ktor internally (release only)
-    // noinspection UseTomlInstead
-    implementation("org.slf4j:slf4j-simple:2.0.17")
+                implementation(libs.ktor.client.core)
+                // required by ktor internally (release only)
+                // noinspection UseTomlInstead
+                implementation("org.slf4j:slf4j-simple:2.0.17")
+            }
+        }
+    }
 }
