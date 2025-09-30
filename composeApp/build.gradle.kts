@@ -67,6 +67,10 @@ android {
         // Taken from the AS template project, should be safe
         resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
+
+    sourceSets["main"].kotlin.srcDir("src/androidMain/kotlin")
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].res.srcDir("src/androidMain/res")
 }
 
 dependencies {
