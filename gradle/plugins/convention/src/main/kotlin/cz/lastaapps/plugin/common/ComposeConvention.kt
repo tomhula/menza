@@ -19,6 +19,7 @@
 
 package cz.lastaapps.plugin.common
 
+import com.android.build.api.dsl.ComposeOptions
 import cz.lastaapps.extensions.alias
 import cz.lastaapps.extensions.debugImplementation
 import cz.lastaapps.extensions.implementation
@@ -28,13 +29,17 @@ import cz.lastaapps.plugin.BasePlugin
 import org.gradle.kotlin.dsl.assign
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.getPlugin
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradlePluginExtension
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 
+@OptIn(ExperimentalKotlinGradlePluginApi::class)
 class ComposeConvention :
     BasePlugin(
         {
             pluginManager {
                 alias(libs.plugins.kotlin.compose.compiler)
+                alias(libs.plugins.compose.multiplatform)
                 // Required by Decompose
                 alias(libs.plugins.kotlin.serialization)
             }
@@ -49,6 +54,8 @@ class ComposeConvention :
             }
 
             dependencies {
+                /* HOW TO DO THIS? */
+                implementation(compose.runtime)
                 implementation(libs.google.material)
 
                 implementation(libs.androidx.activity.compose)
